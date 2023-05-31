@@ -1,109 +1,46 @@
-# Vbox Ansible role
+# Vbox Deploy Ansible role
 ![Logo](logo.gif)
 
-[![Build Status](https://app.travis-ci.com/idealista/vbox_role.svg)](https://app.travis-ci.com/github/idealista/vbox_role)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-idealista.vbox_role-B62682.svg)](https://galaxy.ansible.com/idealista/vbox_role)
+This role provides the ability to authorize remote systems for passwordless
+SSH authentication.
 
+This role is helpful when you have a remote machine you want to use by
+ansible and wish to use SSH key based authentication. It will handle setting
+the SSH keys on the remote machine allowing you to create an ansible inventory
+file with the remote machine. Then you can easily call any ansible playbook
+against the remote machine.
 
+## Role Variables
 
-This ansible role installs Vbox in a Debian environment. It has been tested for the following Debian versions:
-* Bulleye
-* Buster
+Below are the available varaibles you will need to supply to the role.
 
-This role has been generated using the [cookiecutter](https://github.com/cookiecutter/cookiecutter) tool, you can generate a similar role that fits your needs using the this [cookiecutter template](https://github.com/idealista/cookiecutter-ansible-role).
+| Variable | Description | Var Type | Example |
+| --- | --- | --- | --- |
+| vbox_user | User used in the deploy | String | vbox_user: user | 
+| vbox_dir_isos | Directory containing the isos | String | vbox_dir_isos: "/home/{{ vbox_user }}/ImagesISOs" | 
+| vbox_dir_disks | Directory containing the VMs disks | String | vbox_dir_disks: "/home/{{ vbox_user }}/.VMsDisks" | 
+| vbox_dir_vms | Directory containing the VMs | String | vbox_dir_vms: "/home/{{ vbox_user }}/VMs" |
+| vbox_images_isos | public key file (absolute path) to set into remote system | List containing dictionaries |  vbox_images_isos: List {} {}|
+| vbox_custom_isos | SSH port to connect to | List containing dictionaries | vbox_custom_isos: - {name: ..., url: ..., path: ...} | 
+| vbox_vms_options | SSH port to connect to | List containing dictionaries | vbox_vms_options: - {} {} | 
 
-- [Getting Started](#getting-started)
-	- [Prerequisities](#prerequisities)
-	- [Installing](#installing)
-- [Usage](#usage)
-- [Testing](#testing)
-- [Built With](#built-with)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
-- [Contributing](#contributing)
+## Example Playbook
 
-## Getting Started
-These instructions will get you a copy of the role for your Ansible playbook. Once launched, it will install Vbox in a Debian system.
-
-### Prerequisities
-
-Ansible 5.2.0 version installed.
-
-Molecule 3.x.x version installed.
-
-For testing purposes, [Molecule](https://molecule.readthedocs.io/) with [Docker](https://www.docker.com/) as driver and [Goss](https://github.com/goss-org/goss) as verifier.
-
-### Installing
-
-Create or add to your roles dependency file (e.g requirements.yml):
-
-```
-- src: idealista.vbox_role
-  version: 1.0.0
-  name: vbox_role
-```
-
-Install the role with ansible-galaxy command:
-
-```
-ansible-galaxy install -p roles -r requirements.yml -f
-```
-
-Use in a playbook:
-
-```
+```yaml
 ---
-- hosts: someserver
+- name: Vbox Deploy Role
+  hosts: localhost
+
   roles:
-    - role: vbox_role
+    - role: vbox_deploy_role
+      vars:
+        
 ```
-
-## Usage
-
-Look to the [defaults](defaults/main.yml) properties file to see the possible configuration properties, it is very likely that you will not need to override any variables.
-
-
-## Testing
-
-### Install dependencies
-
-```sh
-$ pipenv sync
-```
-
-For more information read the [pipenv docs](ipenv-fork.readthedocs.io/en/latest/).
-
-### Testing
-
-```sh
-$ pipenv run molecule test 
-```
-
-## Built With
-
-![Ansible](https://img.shields.io/badge/ansible-5.2.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-3.4.0-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
-
-## Versioning
-
-For the versions available, see the [tags on this repository](https://github.com/jjaviersb/vbox_role/tags).
-
-Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
-
-## Authors
-
-* **Idealista** - *Work with* - [idealista](https://github.com/idealista)
-
-See also the list of [contributors](https://github.com/jjaviersb/vbox_role/contributors) who participated in this project.
 
 ## License
 
-![Apache 2.0 License](https://img.shields.io/hexpm/l/plug.svg)
+GPLv3
 
-This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license - see the [LICENSE](LICENSE) file for details.
+## Author Information
 
-## Contributing
-
-Please read [CONTRIBUTING.md](.github/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Javier Sánchez Bracamonte
