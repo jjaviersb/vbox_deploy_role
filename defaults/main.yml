@@ -1,3 +1,33 @@
 ---
-# Default vars
+### Default vars
 
+vbox_user: user
+vbox_dir_isos: "/home/{{ vbox_user }}/ImagesISOs"
+vbox_dir_vms: "/home/{{ vbox_user }}/VMs"
+
+## vbox_images_isos - example
+
+# vbox_images_isos:
+# - { name: ubuntuserver-22.04.iso, url: "{{ url_ubuntu_server }}", path: "{{ path_images_iso }}/ubuntuserver-22.04.iso" }
+
+## vbox_custom_isos - example
+
+# vbox_custom_isos:
+# - { src: files/example.iso, name: example.iso }
+
+## vbox_vms_options - example | the only one needed is iso_path
+
+# vbox_vms_options:
+# - { 
+#  name: UbuntuServer, 
+#  ram: 2048, 
+#  cpus: 2, 
+#  disk_size: 20480, 
+#  disk_path: "/home/{{ vbox_user }}/UbuntuServer", 
+#  disk_format: ... ,
+#  net_type: ... ,
+#  bridgeadapter: ... ,
+#  vram: ... ,
+#  iso_path: /isos/ubuntuserver.iso,
+#  }
+# - {} anothers

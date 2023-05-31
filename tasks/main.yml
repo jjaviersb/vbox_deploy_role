@@ -10,7 +10,7 @@
     state: directory
     owner: "{{ vbox_user }}"
     group: "{{ vbox_user }}"
-    mode: 075
+    mode: 0755
 
 - name: VBox Role | Create Directory for VMs
   file:
@@ -26,13 +26,14 @@
     dest: "{{ item.path }}"
   with_items:
     - "{{ vbox_images_isos }}"
+  when: vbox_images_isos is defined
 
 - name: VBox Role | Copy custom images
   template:
     src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
+    dest: "{{ vbox_dir_isos }}/{{ item.name }}"
   loop: "{{ vbox_custom_isos }}"
-  when: vbox_custom_isos
+  when: vbox_custom_isos is defined
 
 - name: "VBox | Create VMs"
   vars:
