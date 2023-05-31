@@ -18,7 +18,6 @@ Below are the available varaibles you will need to supply to the role.
 | --- | --- | --- | --- |
 | vbox_user | User used in the deploy | String | vbox_user: user | 
 | vbox_dir_isos | Directory containing the isos | String | vbox_dir_isos: "/home/{{ vbox_user }}/ImagesISOs" | 
-| vbox_dir_disks | Directory containing the VMs disks | String | vbox_dir_disks: "/home/{{ vbox_user }}/.VMsDisks" | 
 | vbox_dir_vms | Directory containing the VMs | String | vbox_dir_vms: "/home/{{ vbox_user }}/VMs" |
 | vbox_images_isos | public key file (absolute path) to set into remote system | List containing dictionaries |  vbox_images_isos: List {} {}|
 | vbox_custom_isos | SSH port to connect to | List containing dictionaries | vbox_custom_isos: - {name: ..., url: ..., path: ...} | 

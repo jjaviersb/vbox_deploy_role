@@ -19,14 +19,6 @@
     owner: "{{ vbox_user }}"
     group: "{{ vbox_user }}"
     mode: 0755
-  
-- name: VBox Role | Create Directory for VMs Disks
-  file:
-    path: "{{ vbox_dir_vms }}"
-    state: directory
-    owner: "{{ vbox_user }}"
-    group: "{{ vbox_user }}"
-    mode: 0755
 
 - name: VBox Role | Download ISO Images
   get_url:
