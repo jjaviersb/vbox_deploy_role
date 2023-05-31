@@ -4,7 +4,6 @@
 vbox_user: user
 vbox_dir_isos: "/home/{{ vbox_user }}/ImagesISOs"
 vbox_dir_vms: "/home/{{ vbox_user }}/VMs"
-vbox_dir_disks: "/home/{{ vbox_user }}/.VMsDisks"
 ## vbox_images_isos - example
 
 # vbox_images_isos:
