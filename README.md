@@ -1,14 +1,7 @@
 # Vbox Deploy Ansible role
 ![Logo](logo.gif)
 
-This role provides the ability to authorize remote systems for passwordless
-SSH authentication.
-
-This role is helpful when you have a remote machine you want to use by
-ansible and wish to use SSH key based authentication. It will handle setting
-the SSH keys on the remote machine allowing you to create an ansible inventory
-file with the remote machine. Then you can easily call any ansible playbook
-against the remote machine.
+This role ...
 
 ## Role Variables
 
